@@ -1,0 +1,111 @@
+body{
+    margin: 20px 20px 0 20px;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #706A6A;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pesquisar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    background-color: #565555;
+    width: 40%;
+    height: 64px;
+    border-radius: 52px;
+    padding: 0 12px 0 16px;
+}
+
+.pesquisar label{
+    font-family: "Lalezar", "sans-serif";
+    font-size: 20px;
+    color: #FFFF;
+
+}
+
+.pesquisar input{
+    width: 70%;
+    height: 16px;
+    border-radius: 52px;
+    border: solid 1px gray;
+    background-color: #A4A0A0;
+    padding-left: 8px;
+}
+
+.pesquisar input::placeholder{
+    color:#3F3B3B;
+    font-family: "Alef", "sans-serif";
+    font-size: 14px;
+}
+
+.login{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.login button{
+    background: none;
+    border: none;
+    border-bottom: solid 0.5px white;
+    color: white;
+    font-size: 18px;
+    font-family: "Alef", "sans-serif";
+}
+
+.login button:hover{
+    color: #949191;
+    border-bottom: #949191;
+    cursor: pointer;
+}
+
+.filtros{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    font-family: "Alef", "sans-serif";
+    color:#FFFF;
+    margin-top: 16px;
+}
+
+.filtros li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.filtros ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2px 2px 2px 2px;
+    padding: 8px;
+    border-radius: 40px;
+    background-color: #3F3B3B;
+    font-size: 14px;
+    justify-content: center;
+
+}
+
+.filtros ul button{
+    background: none;
+    border: none;
+    color: white;
+}
+
+.filtros button:hover{
+    color: #706c6c;
+    cursor: pointer;
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
