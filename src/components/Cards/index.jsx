@@ -1,3 +1,5 @@
+import "./style/style.css"
+
 export default function GameCard({gameImg, gameName, releaseDate, devImg, platformsImg}) {
     return (
         <>
