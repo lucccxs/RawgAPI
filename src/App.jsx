@@ -1,16 +1,20 @@
-import GameCard from "./components/Cards/"
+import GamePage from "./Templates/GamePage"
 import Home from "./Templates/Home"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
   return(
     <>
-      <Home/>
-      <div className="pai-cards">
-        <GameCard/>
-        <GameCard/>
-        <GameCard/>
-        <GameCard/>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          
+          <Route path="/games" element= {<GamePage/>}></Route>
+          <Route 
+            path="/"
+            element={<Home/>}
+          />
+        </Routes>
+      </BrowserRouter>
     </>
 
   )

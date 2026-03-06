@@ -1,5 +1,8 @@
 import "./style/style.css"
+import GameCard from "../../components/Cards/"
+
 export default function Home(){
+
     return(
         
         <>
@@ -14,7 +17,6 @@ export default function Home(){
                 </div>
             </header>
             <div className="filtros">
-                    <p>Filtros: </p>
                 <li>
                     <ul>
                         Plataforma
@@ -58,6 +60,50 @@ export default function Home(){
                     </ul>
                 </li>
             </div>
+            <div className="pai-cards">
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                      <GameCard/>
+                  </div>
         </>
     )
 }

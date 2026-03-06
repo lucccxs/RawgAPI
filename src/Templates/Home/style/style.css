@@ -32,7 +32,7 @@ header{
 
 .pesquisar input{
     width: 70%;
-    height: 16px;
+    height: 24px;
     border-radius: 52px;
     border: solid 1px gray;
     background-color: #A4A0A0;
@@ -74,7 +74,8 @@ header{
     width: 50%;
     font-family: "Alef", "sans-serif";
     color:#FFFF;
-    margin-top: 16px;
+    margin: 16px 0;
+    gap: 12px;
 }
 
 .filtros li{
