@@ -1,13 +1,9 @@
-body{
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #706A6A;
-}
 
 header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 20px 20px 0 20px;
 }
 
 .pesquisar{
@@ -26,6 +22,7 @@ header{
     font-family: "Lalezar", "sans-serif";
     font-size: 20px;
     color: #FFFF;
+    cursor: pointer;
 
 }
 
@@ -74,11 +71,11 @@ header{
     width: 50%;
     font-family: "Alef", "sans-serif";
     color:#FFFF;
-    margin: 16px 0;
     gap: 12px;
 }
 
 .filtros li{
+    margin-left: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -109,4 +106,3 @@ header{
     transform: rotate(90deg);
     transition: transform 0.3s ease;
 }
-
