@@ -6,41 +6,52 @@ margin: auto;
 /* 1. O container que limita a largura (ajuste para o tamanho que quiser) */
 .recomendados {
     width: 100%;
-    overflow: hidden; /* Garante que nada saia desse bloco */
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    height: 300px;
+    align-items: center;
 }
 
+.carrossel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    max-width: 90%;
+    overflow-x: auto;
+}
+
+.carrossel::-webkit-scrollbar{
+    display: none;
+}
+
+    
+
 /* 2. O container do scroll (onde a mágica acontece) */
-.recomendacoes {
+.carrossel .recomendacoes {
     display: flex !important; /* Força o flexbox */
     flex-direction: row;
     flex-wrap: nowrap !important; /* PROÍBE quebrar linha */
-    
+    justify-content: center;
     overflow-x: auto; /* Habilita o scroll horizontal */
-    overflow-y: hidden; /* Mata o scroll vertical */
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;     /* Firefox */
+
     
-    gap: 20px;
-    padding: 20px 0;
-    width: 100%;
-    
-    /* Melhora a experiência */
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    box-sizing: border-box;
+}
+
+h4{
+    height: fit-content;
+    display: flex;
+    align-self: start;
 }
 
 /* 3. OS FILHOS (Os componentes <Recomendado />) */
 /* Usamos o seletor "> *" para pegar qualquer coisa que estiver lá dentro */
-.recomendacoes > * {
-    flex: 0 0 250px !important; /* O 0 0 impede de encolher e de crescer */
-    width: 250px; /* Define uma largura fixa para teste */
-    scroll-snap-align: start;
-}
-
-/* Esconder a barra de rolagem para testar se o layout estabiliza */
-.recomendacoes::-webkit-scrollbar {
-    height: 8px;
-}
-.recomendacoes::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 10px;
+.carrossel .recomendacoes > * {
+    gap: 20px;
+    width: 100%;
+    flex: 0 0 250px;
 }
