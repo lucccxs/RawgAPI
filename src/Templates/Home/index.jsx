@@ -1,5 +1,6 @@
 import "./style/style.css"
 import GameCard from "../../components/Cards/"
+import { AiOutlineSearch } from "react-icons/ai"
 
 export default function Home(){
 
@@ -9,7 +10,7 @@ export default function Home(){
             <header>
                 <div className="pesquisar">
                     <label>RawgAPI</label>
-                    <input type="text" placeholder="Pesquisar"/>
+                    <input type="text" placeholder="Pesquisar"/><AiOutlineSearch size={30} className="lupa"/>
                 </div>
                 <div className="login">
                     <button>Entrar</button>
