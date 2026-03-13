@@ -40,6 +40,9 @@ export default function GamePage({nome, ano, dev, desc, genero, pub, metacritic,
                             <Recomendado/>
                             <Recomendado/>
                             <Recomendado/>
+                            <Recomendado/>
+                            <Recomendado/>
+                            <Recomendado/>
                         </div>
                     </div>
                 </div>
