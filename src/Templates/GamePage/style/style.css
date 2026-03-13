@@ -1,57 +1,90 @@
 .parallax{
-margin: auto;
+    margin: auto;
 }
 
-
-/* 1. O container que limita a largura (ajuste para o tamanho que quiser) */
+/* CONTAINER PRINCIPAL */
 .recomendados {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 12px;
-    height: 300px;
+    height: fit-content;
     align-items: center;
 }
 
-.carrossel{
+/* TÍTULO */
+.recomendados h4{
+    height: fit-content;
+    display: flex;
+    align-self: flex-start;
+}
+
+/* CARROSSEL */
+.recomendados .carrossel{
+    position: relative; /* referência para os botões */
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
     box-sizing: border-box;
     max-width: 90%;
-    overflow-x: auto;
+    width: 100%;
+
+    overflow: hidden;
 }
 
-.carrossel::-webkit-scrollbar{
+.recomendados .carrossel::-webkit-scrollbar{
     display: none;
 }
 
-    
-
-/* 2. O container do scroll (onde a mágica acontece) */
-.carrossel .recomendacoes {
-    display: flex !important; /* Força o flexbox */
-    flex-direction: row;
-    flex-wrap: nowrap !important; /* PROÍBE quebrar linha */
-    justify-content: center;
-    overflow-x: auto; /* Habilita o scroll horizontal */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;     /* Firefox */
-
-    
-}
-
-h4{
-    height: fit-content;
+/* CONTAINER DOS CARDS */
+.recomendados .carrossel .recomendacoes {
     display: flex;
-    align-self: start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* 3. OS FILHOS (Os componentes <Recomendado />) */
-/* Usamos o seletor "> *" para pegar qualquer coisa que estiver lá dentro */
-.carrossel .recomendacoes > * {
-    gap: 20px;
-    width: 100%;
-    flex: 0 0 250px;
+.recomendados .carrossel .recomendacoes::-webkit-scrollbar{
+    display: none;
+}
+
+/* CARDS */
+.recomendados .carrossel .recomendacoes > * {
+    flex: 0 0 300px;
+}
+
+/* BOTÕES */
+.recomendados .carrossel button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(0,0,0,0.6);
+    color: white;
+
+    cursor: pointer;
+    font-size: 20px;
+
+}
+
+/* HOVER */
+.recomendados .carrossel button:hover{
+    background: rgba(0,0,0,0.85);
 }

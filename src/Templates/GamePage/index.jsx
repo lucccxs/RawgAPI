@@ -1,68 +1,58 @@
 import capa from "../../assets/Imagem/jogo.jpeg"
 import { FaPlaystation, FaXbox, FaSteam } from "react-icons/fa";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import Header from "../../components/header";
 import Recomendado from "../../components/Cards/recomedacao";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import "./style/style.css"
 
+export default function GamePage({ nome, ano, dev, desc, genero, pub, metacritic, tempo, avaliacoes, recomendacoes }) {
 
-export default function GamePage({nome, ano, dev, desc, genero, pub, metacritic, tempo, avaliacoes, recomendacoes}){
-    const carrossel = useRef(null);
+    const carrossel = useRef(null)
 
-  // Clonar itens para criar efeito infinito
-  useEffect(() => {
-    const container = carrossel.current;
-    if (!container) return;
+    const handleRightClick = () => {
 
-    const items = Array.from(container.children);
-    items.forEach((item) => {
-      const clone = item.cloneNode(true);
-      clone.classList.add("clone");
-      container.appendChild(clone);
-    });
+        const container = carrossel.current
+        const cardWidth = container.children[0].offsetWidth + 20
+        const maxScroll = container.scrollWidth - container.offsetWidth
 
-    // Começa no primeiro original
-    container.scrollLeft = 0;
-  }, []);
+        if (container.scrollLeft >= maxScroll) {
+            container.scrollLeft = 0
+        } else {
+            container.scrollBy({
+                left: cardWidth,
+                behavior: "smooth"
+            })
+        }
+    }
 
-  const scrollDireita = () => {
-    const container = carrossel.current;
-    const itemWidth = container.children[0].offsetWidth + 20; // gap de 20px
-    container.scrollBy({ left: itemWidth, behavior: "smooth" });
-    
-    // Loop infinito: quando chegar ao final, volta pro começo
-    setTimeout(() => {
-      if (container.scrollLeft >= container.scrollWidth / 2) {
-        container.scrollLeft = 0;
-      }
-    }, 300); // espera a animação acabar
-  };
+    const handleLeftClick = () => {
 
-  const scrollEsquerda = () => {
-    const container = carrossel.current;
-    const itemWidth = container.children[0].offsetWidth + 20; // gap de 20px
-    container.scrollBy({ left: -itemWidth, behavior: "smooth" });
-    
-    // Loop infinito: se for menor que zero, volta pro final
-    setTimeout(() => {
-      if (container.scrollLeft <= 0) {
-        container.scrollLeft = container.scrollWidth / 2;
-      }
-    }, 300);
-  };
+        const container = carrossel.current
+        const cardWidth = container.children[0].offsetWidth + 20
 
-    return(
+        if (container.scrollLeft <= 0) {
+            container.scrollLeft = container.scrollWidth
+        } else {
+            container.scrollBy({
+                left: -cardWidth,
+                behavior: "smooth"
+            })
+        }
+    }
+
+    return (
         <div className="parallax">
-            <div className="parallax-image" style={{backgroundImage: 'url()'}}>
+            <div className="parallax-image" style={{ backgroundImage: 'url()' }}>
                 <div className="overlay"></div>
             </div>
-            <Header/>
+            <Header />
             <div className="infos">
                 <div className="header">
                     <div className="plataformas">
-                        <FaPlaystation size={20}/>
-                        <FaXbox/>
-                        <FaSteam/>
+                        <FaPlaystation size={20} />
+                        <FaXbox />
+                        <FaSteam />
                         <div className="dev-pub">
                             <p>Ubisoft</p>
                             <p>Ubisoft</p>
@@ -70,7 +60,7 @@ export default function GamePage({nome, ano, dev, desc, genero, pub, metacritic,
                     </div>
                 </div>
                 <main>
-                    <img src={capa}/>
+                    <img src={capa} />
                     <p>Assassin's Creed Black Flag</p>
                     <p>2013</p>
                     <p>Jogo de piratinha que vira assassino, vulgo Edward Kenway</p>
@@ -78,24 +68,27 @@ export default function GamePage({nome, ano, dev, desc, genero, pub, metacritic,
                     <p>8/10</p>
                     <p>12h</p>
                 </main>
-                    <div className="recomendados">
-                        <h4>Recomendações</h4>
-                                <button className ="seta-esquerda" onClick={scrollEsquerda}>&lt;</button>
-                           <div className="carrossel">
-                                <div className="recomendacoes" ref={carrossel}>
-                                    <Recomendado/>
-                                    <Recomendado/>
-                                    <Recomendado/>
-                                    <Recomendado/>
-                                    <Recomendado/>
-                                    <Recomendado/>
-                                    <Recomendado/>
-                                </div>
-                            </div>
-                            <button className="seta-direita" onClick={scrollDireita}>&gt;</button>
-                        </div>
+            </div>
+            <div className="recomendados">
+                <h4>Recomendações</h4>
+                <div className="carrossel">
+                    <button className="seta-esquerda" onClick={handleLeftClick}>
+                        <IoIosArrowBack />
+                    </button>
+                    <div className="recomendacoes" ref={carrossel}>
+                        <Recomendado />
+                        <Recomendado />
+                        <Recomendado />
+                        <Recomendado />
+                        <Recomendado />
+                        <Recomendado />
+                        <Recomendado />
                     </div>
+                    <button className="seta-direita" onClick={handleRightClick}>
+                        <IoIosArrowForward />
+                    </button>
                 </div>
-
+            </div>
+        </div>
     )
 }
