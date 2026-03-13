@@ -28,7 +28,7 @@ export default function GamePage({nome, ano, dev, desc, genero, pub, metacritic,
                     <img src={capa}/>
                     <p>Assassin's Creed Black Flag</p>
                     <p>2013</p>
-                    <p>Jogo de piratinha que vira assassino e é fodão, vulgo Edward Kenway</p>
+                    <p>Jogo de piratinha que vira assassino, vulgo Edward Kenway</p>
                     <p>Ação e Aventura</p>
                     <p>8/10</p>
                     <p>12h</p>
