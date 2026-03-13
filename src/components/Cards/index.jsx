@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom"
 export default function GameCard({id, gameImg, gameName, releaseDate, devImg, platformsImg}) {
     const navigate = useNavigate()
     function handleClick({id}){
-        navigate(`/games/${id}`)
+        navigate(`/games`)
     }
-    
+
     return (
         <>
             <div className="cards" onClick={handleClick}>

@@ -1,43 +1,48 @@
-*{
+body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.pai-cards{
+.recomendados{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(rgb(85, 84, 84));
+    width: 100%;
+    padding: 12px;
+}
+.recomendados .recomendacoes{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.cards{
+.cards-recomendado{
     background-color: black;
     width: 20%;
-    height: 20rem;
-    border-radius: 20px;
+    height: 12rem;
     margin: 24px;
     box-shadow: 0 0 5px 4px rgb(73, 72, 72);
     cursor: pointer;
     
 }
 
-.cards .imagem-jogo{
+.cards-recomendado .imagem-jogo-recomendado{
     padding: 0;
-    height: 50%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 1);
-    border-radius: 20px 20px 0 0;
     position: relative;
     
 }
 
-.cards .imagem-jogo img{
+.cards-recomendado .imagem-jogo-recomendado img{
     height: 100%;
     width: 100%;
-    border-radius: 20px 20px 0 0;
+   
 }
 
-.cards .imagem-jogo::after {
+.cards-recomendado .imagem-jogo-recomendado::after {
     content: "";
     position: absolute;
     top: 0;
@@ -45,16 +50,15 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3); /* 0.5 é a transparência. Se quiser 100% preto, use 1 */
-    border-radius: 20px 20px 0 0; /* Para acompanhar o arredondamento que você já fez */
 }
 
-.cards:hover{
+.cards-recomendado:hover{
     transform: translateY(-20px) translateX(2px);
     transition: transform 0.5s ease;
     box-shadow: 0 0 5px 4px rgb(153, 151, 151);;
 }
 
-.cards .info-jogo{
+.cards-recomendado .info-jogo-recomendado {
     padding: 0 12px 12px 12px;
     height: 50%;
     box-sizing: border-box;
@@ -66,7 +70,7 @@
     color: aliceblue;
 }
 
-.cards .info-jogo h2{
+.cards-recomendado .info-jogo-recomendado h2{
     margin: 0;
     font-family: "Changa One", "sans-serif";
     text-align: center;
