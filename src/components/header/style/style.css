@@ -41,6 +41,10 @@ header{
     font-size: 14px;
 }
 
+.lupa {
+    cursor: pointer;
+}
+
 .login{
     display: flex;
     flex-direction: row;

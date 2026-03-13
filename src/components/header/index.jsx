@@ -1,4 +1,5 @@
 import "./style/style.css"
+import { IoSearch } from "react-icons/io5"
 export default function Header(){
 
     return(
@@ -8,6 +9,7 @@ export default function Header(){
                 <div className="pesquisar">
                     <label>RawgAPI</label>
                     <input type="text" placeholder="Pesquisar"/>
+                    <IoSearch size={30} className="lupa"/>
                 </div>
                 <div className="login">
                     <button>Entrar</button>
