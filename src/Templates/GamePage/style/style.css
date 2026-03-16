@@ -1,5 +1,95 @@
 .parallax{
     margin: auto;
+    position: relative;
+}
+
+.parallax .parallax-image{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+}
+
+.overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.infos{
+    display: flex;
+    flex-direction: row;
+    background: rgba(19, 18, 18, 0.4);    
+    margin-bottom: 100px;
+    padding: 50px;
+    box-sizing: border-box;
+    
+}
+
+.infos .cover{
+    width: 300px;
+    height: 360px;
+    margin-right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective:1200px;
+}
+
+.infos img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: rotateY(25deg);
+    transform-origin: left;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), -8px 0 15px rgba(0,0,0,0.4);
+}
+
+.infos img:hover{
+    transform: rotateY(5deg) scale(1.05);
+    transition: transform 0.2s ease;
+    filter: brightness(1.1);
+}
+
+.infos main{
+    display: flex;
+    flex-direction: column;
+}
+
+.infos main .desc{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+
+}
+
+.infos main .desc p{
+    color: white;
+    font-family: "Liter", sans-serif;
+    word-wrap: break-word;
+    
+}
+
+.infos main .desc .titulo{
+    font-family: "Liter", sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.infos main .desc .plataformas{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.infos main .desc .dev-pub, .plataformas{
+    color: white;
 }
 
 /* CONTAINER PRINCIPAL */
@@ -10,6 +100,10 @@
     gap: 12px;
     height: fit-content;
     align-items: center;
+    margin-bottom: 20px;
+    background: rgba(19, 18, 18, 0.4);    
+  
+
 }
 
 /* TÍTULO */
@@ -17,6 +111,10 @@
     height: fit-content;
     display: flex;
     align-self: flex-start;
+    font-size: x-large ;
+    font-family: "Liter", sans-serif;
+    color: white;
+    font-weight: bold;
 }
 
 /* CARROSSEL */
