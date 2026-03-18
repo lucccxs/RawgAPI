@@ -25,7 +25,6 @@
 .cards .imagem-jogo{
     padding: 0;
     height: 50%;
-    background-color: rgba(0, 0, 0, 1);
     border-radius: 20px 20px 0 0;
     position: relative;
     
@@ -44,7 +43,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* 0.5 é a transparência. Se quiser 100% preto, use 1 */
+    background-color: rgba(0, 0, 0, 0.2); /* 0.5 é a transparência. Se quiser 100% preto, use 1 */
     border-radius: 20px 20px 0 0; /* Para acompanhar o arredondamento que você já fez */
 }
 
@@ -52,6 +51,7 @@
     transform: translateY(-20px) translateX(2px);
     transition: transform 0.5s ease;
     box-shadow: 0 0 5px 4px rgb(153, 151, 151);;
+    filter: brightness(1.3);
 }
 
 .cards .info-jogo{
@@ -66,12 +66,18 @@
     color: aliceblue;
 }
 
+.cards .info-jogo .plataformas{
+    display: flex;
+    gap: 12px
+    ;
+}
+
 .cards .info-jogo h2{
     margin: 0;
-    font-family: "Changa One", "sans-serif";
+    font-family: "Liter", "sans-serif";
     text-align: center;
     font-weight: 400;
-    text-shadow: 1px 1px 5px rgb(105, 103, 105);
+    text-shadow: 3px 3px 16px rgb(187, 185, 187);
 }
 
 h3{

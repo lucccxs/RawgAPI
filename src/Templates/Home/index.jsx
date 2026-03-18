@@ -1,5 +1,5 @@
 import "./style/style.css"
-import GameCard from "../../components/Cards/"
+import GameCard from "../../components/Cards/GameCard"
 import Header from "../../components/header"
 
 

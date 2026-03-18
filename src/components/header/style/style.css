@@ -3,7 +3,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px 20px 0 20px;
+    margin: 20px 20px 20px;
 }
 
 .pesquisar{
@@ -11,7 +11,7 @@ header{
     flex-direction: row;
     align-items: center;
     gap: 12px;
-    background-color: #565555;
+    background-color: #383737;
     width: 40%;
     height: 64px;
     border-radius: 52px;
@@ -30,19 +30,20 @@ header{
     width: 70%;
     height: 24px;
     border-radius: 52px;
-    border: solid 1px gray;
-    background-color: #A4A0A0;
+    border: solid 1px rgb(100, 99, 99);
+    background-color: #494848;
     padding-left: 8px;
 }
 
 .pesquisar input::placeholder{
-    color:#3F3B3B;
+    color:#afadad;
     font-family: "Alef", "sans-serif";
     font-size: 14px;
 }
 
 .lupa {
     cursor: pointer;
+    color: white;
 }
 
 .login{
@@ -79,7 +80,7 @@ header{
 }
 
 .filtros li{
-    margin-left: 20px;
+    margin: 0px 0px 20px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -92,7 +93,7 @@ header{
     margin: 2px 2px 2px 2px;
     padding: 8px;
     border-radius: 40px;
-    background-color: #3F3B3B;
+    background-color: #494848;
     font-size: 14px;
     justify-content: center;
 
@@ -104,9 +105,9 @@ header{
     color: white;
 }
 
-.filtros button:hover{
+/* .filtros button:hover{
     color: #706c6c;
     cursor: pointer;
     transform: rotate(90deg);
     transition: transform 0.3s ease;
-}
+} */

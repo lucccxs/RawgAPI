@@ -20,7 +20,7 @@
     background: rgba(0,0,0,0.5);
 }
 
-.infos{
+.infoPai{
     display: flex;
     flex-direction: row;
     background: rgba(19, 18, 18, 0.4);    
@@ -30,7 +30,7 @@
     
 }
 
-.infos .cover{
+.infoPai .cover{
     width: 300px;
     height: 360px;
     margin-right: 50px;
@@ -40,7 +40,7 @@
     perspective:1200px;
 }
 
-.infos img{
+.infoPai img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -50,18 +50,38 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.6), -8px 0 15px rgba(0,0,0,0.4);
 }
 
-.infos img:hover{
+.infoPai img:hover{
     transform: rotateY(5deg) scale(1.05);
     transition: transform 0.2s ease;
     filter: brightness(1.1);
 }
 
-.infos main{
+.infoPai .infos{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 200px;
+    align-items: center;
 }
 
-.infos main .desc{
+.infoPai .infos main, .imdb{
+    display: flex;
+    color: white;
+    font-family: "Liter", "sans-serif";
+}
+
+.infoPai .infos .imdb{
+    border: 5px  solid green;
+    height: 30%;
+    width: 19%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    font-size: x-large;
+}
+
+
+.infoPai .infos main .desc{
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -69,26 +89,24 @@
 
 }
 
-.infos main .desc p{
-    color: white;
-    font-family: "Liter", sans-serif;
+.infoPai .infos main .desc p{
     word-wrap: break-word;
     
 }
 
-.infos main .desc .titulo{
+.infoPai .infos main .desc .titulo{
     font-family: "Liter", sans-serif;
     font-weight: bold;
     font-size: x-large;
 }
 
-.infos main .desc .plataformas{
+.infoPai .infos main .desc .plataformas{
     display: flex;
     flex-direction: row;
     gap: 12px;
 }
 
-.infos main .desc .dev-pub, .plataformas{
+.infoPai .infos main .desc .dev-pub, .plataformas{
     color: white;
 }
 
@@ -112,7 +130,7 @@
     display: flex;
     align-self: flex-start;
     font-size: x-large ;
-    font-family: "Liter", sans-serif;
+    font-family: "Liter", "sans-serif";
     color: white;
     font-weight: bold;
 }

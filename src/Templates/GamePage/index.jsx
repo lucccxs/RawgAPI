@@ -47,33 +47,37 @@ export default function GamePage({ nome, ano, dev, desc, genero, pub, metacritic
             <div className="overlay"></div>
         </div>
             <Header />
-            <div className="infos">
+            <div className="infoPai">
                 <div className="cover">
                     <img src={capa} />
                 </div>
-                <main>
-                    <div className="desc">
-                        <div className="infos-principais">
-                            <p className="titulo">Assassin's Creed Black Flag</p>
-                            <p>2013</p>
+                <div className="infos">
+                    <main>
+                        <div className="desc">
+                            <div className="infos-principais">
+                                <p className="titulo">Assassin's Creed Black Flag</p>
+                                <p>2013</p>
+                            </div>
+                            <p>Jogo de piratinha que vira assassino, vulgo Edward Kenway</p>
+                            <div className="plataformas">
+                                <FaPlaystation size={20} />
+                                <FaXbox />
+                                <FaSteam />
+                            </div>
+                            <div className="infos-adicionais">
+                                <p>Ação e Aventura</p>
+                                <p>Duração: 12h</p>
+                            </div>
+                            <div className="dev-pub">
+                                <p>Developer: Ubisoft</p>
+                                <p>Publisher: Ubisoft</p>
+                            </div>
                         </div>
-                        <p>Jogo de piratinha que vira assassino, vulgo Edward Kenway</p>
-                        <div className="plataformas">
-                            <FaPlaystation size={20} />
-                            <FaXbox />
-                            <FaSteam />
-                        </div>
-                        <div className="infos-adicionais">
-                            <p>Ação e Aventura</p>
-                            <p>Nota: 8/10</p>
-                            <p>Duração: 12h</p>
-                        </div>
-                        <div className="dev-pub">
-                            <p>Developer: Ubisoft</p>
-                            <p>Publisher: Ubisoft</p>
-                        </div>
+                    </main>
+                    <div className="imdb">
+                        <p>8.5</p>
                     </div>
-                </main>
+                </div>
             </div>
             <div className="recomendados">
                 <h4>Recomendações</h4>
