@@ -1,6 +1,16 @@
 import "./style/style.css"
 import { IoSearch } from "react-icons/io5"
-export default function Header(){
+import { useState } from "react"
+export default function Header({onSearch}){
+    const [searchTerm, setSearchTerm] = useState("")
+
+    const handleSearch = (e) => {
+        e.preventDefault()
+        if (searchTerm.trim()) {
+            onSearch(searchTerm)
+            setSearchTerm("")
+        }
+    }
 
     return(
         
@@ -8,8 +18,17 @@ export default function Header(){
             <header>
                 <div className="pesquisar">
                     <label><a href="http://localhost:5173/">RawgAPI</a></label>
-                    <input type="text" placeholder="Pesquisar"/>
-                    <IoSearch size={30} className="lupa"/>
+                    <form onSubmit={handleSearch}>
+                        <input 
+                            type="text" 
+                            placeholder="Pesquisar"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                        <button type="submit" style={{background: "none", border: "none", cursor: "pointer"}}>
+                            <IoSearch size={30} className="lupa"/>
+                        </button>
+                    </form>
                 </div>
                 <div className="login">
                     <button>Entrar</button>

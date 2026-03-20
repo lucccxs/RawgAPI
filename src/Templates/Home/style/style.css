@@ -4,3 +4,7 @@ body{
     background: linear-gradient(135deg, rgb(24, 23, 23), rgb(80, 78, 78), rgb(121, 117, 117) );
 }
 
+.resultadoPesquisa {
+    color: white;
+    margin-left: 30px;
+}

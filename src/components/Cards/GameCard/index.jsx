@@ -1,10 +1,10 @@
 import "./style/style.css"
-import jogo from "../../../assets/Imagem/jogo.jpeg"
 import { useNavigate } from "react-router-dom"
 import { FaPlaystation, FaXbox, FaSteam } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { BsNintendoSwitch } from "react-icons/bs";
+import { SiEpicgames } from "react-icons/si";
 
-export default function GameCard({id, gameImg, gameName}) {
+export default function GameCard({id, gameImg, gameName, stores}) {
     const navigate = useNavigate()
     function handleClick(){
         navigate(`/game/${id}`)
@@ -21,9 +21,14 @@ export default function GameCard({id, gameImg, gameName}) {
                     <img platformsImg/>
                     <h2>{gameName}</h2>
                      <div className="plataformas">
-                        <FaPlaystation size={20} />
-                        <FaXbox />
-                        <FaSteam />                                            
+                        {stores?.some(s => s.store.name.toLowerCase().includes('playstation')) && <FaPlaystation size={20} />}
+                        {stores?.some(s => s.store.name.toLowerCase().includes('xbox')) && <FaXbox size={20} />}
+                        {stores?.some(s => s.store.name.toLowerCase().includes('steam')) && <FaSteam size={20} />}
+                        {stores?.some(s => s.store.name.toLowerCase().includes('epic')) && <SiEpicgames size={20}/>}
+                        {stores?.some(s => {
+                          const name = s.store.name.toLowerCase();
+                          return name.includes('nintendo') || name.includes('wii');
+                        }) && <BsNintendoSwitch size={20}/>}                                    
                     </div>
                 </div>
             </div>
