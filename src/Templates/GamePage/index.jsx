@@ -1,14 +1,45 @@
-import capa from "../../assets/Imagem/jogo.jpeg"
-import { FaPlaystation, FaXbox, FaSteam } from "react-icons/fa";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { useParams } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { getGameById } from "../../services/games/getGameById";
 import Header from "../../components/header";
 import Recomendado from "../../components/Cards/recomedacao";
-import { useRef } from "react";
+import { FaPlaystation, FaXbox, FaSteam } from "react-icons/fa";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import "./style/style.css"
 
-export default function GamePage({ nome, ano, dev, desc, genero, pub, metacritic, tempo, avaliacoes, recomendacoes }) {
+export default function GamePage() {
+    const { id } = useParams(); // Pega o ID da URL
+    const [game, setGame] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const carrossel = useRef(null);
 
-    const carrossel = useRef(null)
+    const stripHtml = (html) => {
+        if (!html) return "";
+        const div = document.createElement('div');
+        div.innerHTML = html;
+        return div.textContent || div.innerText || "";
+    }
+
+    useEffect(() => {
+        async function fetchGame() {
+            try {
+                setLoading(true);
+                const { data } = await getGameById(id);
+                setGame(data);
+            } catch (err) {
+                console.error(err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchGame();
+    }, [id]);
+
+    if (loading) return <p>Carregando...</p>
+    if (error) return <p>Erro: {error}</p>
+    if (!game) return <p>Jogo não encontrado</p>
 
     const handleRightClick = () => {
 
@@ -43,39 +74,39 @@ export default function GamePage({ nome, ano, dev, desc, genero, pub, metacritic
 
     return (
         <div className="parallax">
-            <div className="parallax-image" style={{ backgroundImage: `url(${capa})` }}>
+            <div className="parallax-image" style={{ backgroundImage: `url(${game.background_image})` }}>
             <div className="overlay"></div>
         </div>
             <Header />
             <div className="infoPai">
                 <div className="cover">
-                    <img src={capa} />
+                    <img src={game.background_image} />
                 </div>
                 <div className="infos">
                     <main>
                         <div className="desc">
                             <div className="infos-principais">
-                                <p className="titulo">Assassin's Creed Black Flag</p>
-                                <p>2013</p>
+                                <p className="titulo">{game.name}</p>
+                                <p>{game.released}</p>
                             </div>
-                            <p>Jogo de piratinha que vira assassino, vulgo Edward Kenway</p>
+                            <p>{stripHtml(game.description)}</p>
                             <div className="plataformas">
                                 <FaPlaystation size={20} />
                                 <FaXbox />
                                 <FaSteam />
                             </div>
                             <div className="infos-adicionais">
-                                <p>Ação e Aventura</p>
-                                <p>Duração: 12h</p>
+                                <p>{game.genres?.map(g => g.name).join(", ") || "N/A"}</p>
+                                <p>Duração: {game.playtime}h</p>
                             </div>
                             <div className="dev-pub">
-                                <p>Developer: Ubisoft</p>
-                                <p>Publisher: Ubisoft</p>
+                                <p>Developer: {game.developers?.[0]?.name || "N/A"}</p>
+                                <p>Publisher: {game.publishers?.[0]?.name || "N/A"}</p>
                             </div>
                         </div>
                     </main>
                     <div className="imdb">
-                        <p>8.5</p>
+                        <p>{game.metacritic}</p>
                     </div>
                 </div>
             </div>
@@ -86,13 +117,16 @@ export default function GamePage({ nome, ano, dev, desc, genero, pub, metacritic
                         <IoIosArrowBack />
                     </button>
                     <div className="recomendacoes" ref={carrossel}>
-                        <Recomendado />
-                        <Recomendado />
-                        <Recomendado />
-                        <Recomendado />
-                        <Recomendado />
-                        <Recomendado />
-                        <Recomendado />
+                        {game.related_games && game.related_games.length > 0 ? (
+                            game.related_games.map((rec) => (
+                                <Recomendado 
+                                    id={rec.id}
+                                    gameImg={rec.background_image}
+                                />
+                            ))
+                        ) : (
+                            <p>Nenhuma recomendação disponível</p>
+                        )}
                     </div>
                     <button className="seta-direita" onClick={handleRightClick}>
                         <IoIosArrowForward />

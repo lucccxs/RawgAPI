@@ -1,18 +1,17 @@
 import "./style/style.css"
-import jogo from "../../../assets/Imagem/jogo.jpeg"
 import { useNavigate } from "react-router-dom"
 
-export default function Recomendado ({id, gameImg, gameName, releaseDate, devImg, platformsImg}) {
+export default function Recomendado ({id, gameImg, gameName, releaseDate}) {
     const navigate = useNavigate()
-    function handleClick({id}){
-        navigate(`/games`)
+    function handleClick(){
+        navigate(`/game/${id}`)
     }
 
     return (
         <>
             <div className="cards-recomendado" onClick={handleClick}>
                 <div className="imagem-jogo-recomendado">
-                    <img src = {jogo} />
+                    <img src={gameImg} alt={gameName} />
                 </div>
                 <hr />
             </div>

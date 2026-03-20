@@ -7,7 +7,7 @@ export default function Header(){
         <>
             <header>
                 <div className="pesquisar">
-                    <label>RawgAPI</label>
+                    <label><a href="http://localhost:5173/">RawgAPI</a></label>
                     <input type="text" placeholder="Pesquisar"/>
                     <IoSearch size={30} className="lupa"/>
                 </div>

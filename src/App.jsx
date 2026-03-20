@@ -3,12 +3,15 @@ import Home from "./Templates/Home"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 function App() {
+
+  
+
   return(
     <>
       <BrowserRouter>
         <Routes>
           
-          <Route path="/games" element= {<GamePage/>}></Route>
+          <Route path="/game/:id" element= {<GamePage/>}/>
           <Route 
             path="/"
             element={<Home/>}

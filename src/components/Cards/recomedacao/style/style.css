@@ -4,27 +4,15 @@ body{
     box-sizing: border-box;
 }
 
-.recomendados{
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(rgb(85, 84, 84));
-    width: 100%;
-    padding: 12px;
-}
-.recomendados .recomendacoes{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .cards-recomendado{
     background-color: black;
-    width: 20%;
-    height: 12rem;
-    margin: 24px;
+    width: 100%;
+    height: 220px;
+    margin: 0;
     box-shadow: 0 0 5px 4px rgb(73, 72, 72);
     cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
     
 }
 
@@ -39,6 +27,7 @@ body{
 .cards-recomendado .imagem-jogo-recomendado img{
     height: 100%;
     width: 100%;
+    object-fit: cover;
    
 }
 
@@ -53,8 +42,8 @@ body{
 }
 
 .cards-recomendado:hover{
-    transform: translateY(-20px) translateX(2px);
-    transition: transform 0.5s ease;
+    transform: translateY(-8px);
+    transition: transform 0.3s ease;
     box-shadow: 0 0 5px 4px rgb(153, 151, 151);;
     filter: brightness(1.2);
 }
