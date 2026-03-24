@@ -14,6 +14,8 @@ export default function Home(){
     const [loading, setLoading] = useState(true);
     const [pageNumber, setPageNumber] = useState(1);
     const [error, setError] = useState(null);
+    const [hasNext, setHasNext] = useState(null);
+    const [hasPrev, setHasPrev] = useState(null);
     const [totalGames, setTotalGames] = useState(0);
 
     useEffect(() => {
@@ -36,6 +38,8 @@ export default function Home(){
 
                 setGames(response.data.results);
                 setTotalGames(response.data.count);
+                setHasNext(response.data.next);
+                setHasPrev(response.data.previous);
 
             } catch ( err ) {
                 console.error(err);
@@ -53,11 +57,13 @@ export default function Home(){
     }
 
     const handlePageRight = () => {
-        if (totalGames / 20 >= pageNumber) setPageNumber(pageNumber + 1);
+        if (hasNext) setPageNumber(pageNumber + 1);
     }
 
+    console.log(hasNext, hasPrev)
+
     const handlePageLeft = () => {
-        if (pageNumber > 1) setPageNumber(pageNumber - 1);
+        if (hasPrev) setPageNumber(pageNumber - 1);
     }
     
 
@@ -69,7 +75,7 @@ export default function Home(){
         <>
             <Header onSearch={handleSearch}/>
 
-            <div className="resultadoPesquisa"><h3>{searchParams.get('search') == null ? "" : `Resultados para: ${searchParams.get('search')}`}</h3></div>
+            <div className="resultadoPesquisa"><h3>{searchParams.get('search') == null ? "" : `${totalGames} Resultados para: ${searchParams.get('search')}`}</h3></div>
             
 
             <div className="pai-cards">
