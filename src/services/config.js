@@ -10,7 +10,7 @@ const baseConfig = {
 export const AxiosWithoutAuthToken = () => {
     const config = {
         ...baseConfig,
-        timeout : 10000,
+        timeout : 100000,
     }
 
     return axios.create(config);
