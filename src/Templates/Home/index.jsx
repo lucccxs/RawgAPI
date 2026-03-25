@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams, useNavigate } from "react-router-dom"
 import { getGames } from "../../services/games/getGames"
 import { searchGames } from "../../services/games/searchGames"
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export default function Home(){
 
@@ -92,8 +93,10 @@ export default function Home(){
                             <GameCard id={game.id} gameImg={game.background_image} gameName={game.name} stores={game.stores}/>
                       ))}
             </div>
-
-            <button onClick={handlePageLeft}>Menos Página</button> <button onClick={handlePageRight}>Mais Página</button>
+            <div className="buttons">
+                <button onClick={handlePageLeft}><IoIosArrowBack/></button> 
+                <button onClick={handlePageRight}><IoIosArrowForward/></button>
+            </div>
         </>
     )
 }

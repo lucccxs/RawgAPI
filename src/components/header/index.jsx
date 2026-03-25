@@ -202,7 +202,7 @@ export default function Header({onSearch, onFilterChange, initialFilters = {}, s
                             </button>
                         </div>
                         {expandedFilter === 'platforms' && (
-                            <div style={{marginTop: "10px", paddingLeft: "15px", borderLeft: "2px solid #ccc"}}>
+                            <div className="dropdown-filtro" >
                                 {filterOptions.platforms.map(platform => (
                                     <div key={platform.id} style={{marginBottom: "8px"}}>
                                         <input 
@@ -231,7 +231,7 @@ export default function Header({onSearch, onFilterChange, initialFilters = {}, s
                             </button>
                         </div>
                         {expandedFilter === 'genres' && (
-                            <div style={{marginTop: "10px", paddingLeft: "15px", borderLeft: "2px solid #ccc"}}>
+                            <div className="dropdown-filtro">
                                 {filterOptions.genres.map(genre => (
                                     <div key={genre.id} style={{marginBottom: "8px"}}>
                                         <input 
@@ -260,7 +260,7 @@ export default function Header({onSearch, onFilterChange, initialFilters = {}, s
                             </button>
                         </div>
                         {expandedFilter === 'developers' && (
-                            <div style={{marginTop: "10px", paddingLeft: "15px", borderLeft: "2px solid #ccc", maxHeight: "300px", overflowY: "auto"}}>
+                            <div className="dropdown-filtro">
                                 {filterOptions.developers.slice(0, 50).map(developer => (
                                     <div key={developer.id} style={{marginBottom: "8px"}}>
                                         <input 
@@ -289,7 +289,7 @@ export default function Header({onSearch, onFilterChange, initialFilters = {}, s
                             </button>
                         </div>
                         {expandedFilter === 'year' && (
-                            <div style={{marginTop: "10px", paddingLeft: "15px", borderLeft: "2px solid #ccc", maxHeight: "300px", overflowY: "auto"}}>
+                            <div className="dropdown-filtro">
                                 {years.map(year => (
                                     <div key={year} style={{marginBottom: "8px"}}>
                                         <input 
@@ -319,7 +319,7 @@ export default function Header({onSearch, onFilterChange, initialFilters = {}, s
                             </button>
                         </div>
                         {expandedFilter === 'top' && (
-                            <div style={{marginTop: "10px", paddingLeft: "15px", borderLeft: "2px solid #ccc"}}>
+                            <div className="dropdown-filtro">
                                 <div style={{marginBottom: "8px"}}>
                                     <input 
                                         type="radio" 
