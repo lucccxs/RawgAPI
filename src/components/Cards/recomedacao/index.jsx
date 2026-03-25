@@ -1,7 +1,7 @@
 import "./style/style.css"
 import { useNavigate } from "react-router-dom"
 
-export default function Recomendado ({id, gameImg, gameName, releaseDate}) {
+export default function Recomendado ({ id, gameImg, gameName }) {
     const navigate = useNavigate()
     function handleClick(){
         navigate(`/game/${id}`)

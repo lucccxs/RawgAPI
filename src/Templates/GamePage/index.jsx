@@ -50,7 +50,7 @@ export default function GamePage() {
             <div className="parallax-image" style={{ backgroundImage: `url(${game.background_image})` }}>
             <div className="overlay"></div>
         </div>
-            <Header onSearch={handleSearch}/>
+            <Header onSearch={handleSearch} showFilters={false}/>
             <div className="infoPai">
                 <div className="cover">
                     <img src={game.background_image} />

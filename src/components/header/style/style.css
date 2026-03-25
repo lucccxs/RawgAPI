@@ -99,6 +99,52 @@ a {
     gap: 12px;
 }
 
+.filtros-ativos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 20px;
+    background-color: #2a2a2a;
+    margin: 10px 20px 0;
+    border-radius: 8px;
+    font-family: "Alef", "sans-serif";
+    color: #FFFF;
+    align-items: center;
+}
+
+.filtro-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #383737;
+    color: #FFFF;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: "Alef", "sans-serif";
+    border: 1px solid #555;
+}
+
+.filtro-chip button {
+    background: none;
+    border: none;
+    color: #FFFF;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.filtro-chip button:hover {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
 .filtros li{
     margin: 0px 0px 20px 20px;
     display: flex;

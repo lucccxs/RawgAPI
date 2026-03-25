@@ -17,10 +17,17 @@ export default function Home(){
     const [hasNext, setHasNext] = useState(null);
     const [hasPrev, setHasPrev] = useState(null);
     const [totalGames, setTotalGames] = useState(0);
+    const [filters, setFilters] = useState({
+        platforms: [],
+        genres: [],
+        developers: [],
+        year: null,
+        ordering: null
+    })
 
     useEffect(() => {
         setPageNumber(1);
-    }, [searchParams]);
+    }, [searchParams, filters]);
 
     useEffect(() => {
         async function fetchGames() {
@@ -31,9 +38,9 @@ export default function Home(){
                 let response;
                 
                 if (querySearch) {
-                    response = await searchGames(querySearch, pageNumber);
+                    response = await searchGames(querySearch, pageNumber, filters);
                 } else {
-                    response = await getGames(pageNumber);
+                    response = await getGames(pageNumber, filters);
                 }
 
                 setGames(response.data.results);
@@ -48,7 +55,7 @@ export default function Home(){
                 setLoading(false);
             }
         } fetchGames();
-    }, [searchParams, pageNumber]);
+    }, [searchParams, pageNumber, filters]);
 
     
 
@@ -56,11 +63,13 @@ export default function Home(){
         navigate(`?search=${searchTerm}`);
     }
 
+    const handleFilterChange = (newFilters) => {
+        setFilters(newFilters);
+    }
+
     const handlePageRight = () => {
         if (hasNext) setPageNumber(pageNumber + 1);
     }
-
-    console.log(hasNext, hasPrev)
 
     const handlePageLeft = () => {
         if (hasPrev) setPageNumber(pageNumber - 1);
@@ -73,7 +82,7 @@ export default function Home(){
     return(
         
         <>
-            <Header onSearch={handleSearch}/>
+            <Header onSearch={handleSearch} onFilterChange={handleFilterChange} initialFilters={filters} showFilters={true}/>
 
             <div className="resultadoPesquisa"><h3>{searchParams.get('search') == null ? "" : `${totalGames} Resultados para: ${searchParams.get('search')}`}</h3></div>
             
