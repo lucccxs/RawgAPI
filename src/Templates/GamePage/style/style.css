@@ -76,7 +76,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100%;
+    border-radius: 50%;
     font-size: x-large;
 }
 
@@ -120,7 +120,7 @@
     align-items: center;
     margin-bottom: 20px;
     background: rgba(19, 18, 18, 0.4);    
-  
+    padding: 12px;
 
 }
 
@@ -138,16 +138,13 @@
 /* CARROSSEL */
 .recomendados .carrossel{
     position: relative; /* referência para os botões */
-
+    gap: 12px;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
 
-    box-sizing: border-box;
-    max-width: 90%;
+    max-width: 100%;
     width: 100%;
-
     overflow: hidden;
 }
 
@@ -158,14 +155,13 @@
 /* CONTAINER DOS CARDS */
 .recomendados .carrossel .recomendacoes {
     display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
     gap: 20px;
-
+    width: 85%;
+    justify-content: flex-start;
     overflow-x: auto;
     scroll-behavior: smooth;
-
-    -ms-overflow-style: none;
+    padding: 12px;
     scrollbar-width: none;
 }
 
@@ -184,6 +180,8 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    opacity: 1;
+    transition: opacity 0.2s ease;
 
 
     width: 45px;
@@ -203,4 +201,10 @@
 /* HOVER */
 .recomendados .carrossel button:hover{
     background: rgba(0,0,0,0.85);
+}
+
+.recomendados .carrossel button:disabled{
+    opacity: 0;
+    pointer-events: none;
+   
 }
