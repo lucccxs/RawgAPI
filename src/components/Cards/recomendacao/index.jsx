@@ -3,15 +3,24 @@ import { useNavigate } from "react-router-dom"
 
 export default function Recomendado ({ id, gameImg, gameName }) {
     const navigate = useNavigate()
+    
     function handleClick(){
-        navigate(`/game/${id}`)
+        if (id) {
+            navigate(`/game/${id}`)
+        }
     }
 
     return (
         <>
-            <div className="cards-recomendado" onClick={handleClick}>
+            <div className="cards-recomendado" onClick={handleClick} style={{cursor: 'pointer'}}>
                 <div className="imagem-jogo-recomendado">
-                    <img src={gameImg} alt={gameName} />
+                    <img 
+                        src={gameImg || '/placeholder.png'} 
+                        alt={gameName || 'Game'} 
+                        onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/250x150?text=Sem+Imagem';
+                        }}
+                    />
                 </div>
                 <hr />
             </div>

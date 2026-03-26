@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { getGameById } from "../../services/games/getGameById";
+import { getGamesByGenres } from "../../services/games/getGamesByGenres";
 import Header from "../../components/header";
 import Recomendado from "../../components/Cards/recomendacao";
 import { FaPlaystation, FaXbox, FaSteam } from "react-icons/fa";
@@ -15,35 +16,13 @@ export default function GamePage() {
     const [game, setGame] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [recommendedGames, setRecommendedGames] = useState([]);
     const carrossel = useRef(null)
-    const [isAtStart, setIsAtStart] = useState(true)
-    const [isAtEnd, setIsAtEnd] = useState(false)
-
-    useEffect(() => {
-    if (loading) return
-    const container = carrossel.current
-
-    const handleScroll = () => {
-        
-        const maxScroll = container.scrollWidth - container.offsetWidth
-
-        setIsAtStart(container.scrollLeft <= 5)
-        setIsAtEnd(container.scrollLeft >= maxScroll - 5)    }
-
-    container.addEventListener("scroll", handleScroll)
-
-    return () => container.removeEventListener("scroll", handleScroll)
-}, [])
 
 
    const handleRightClick = () => {
     const container = carrossel.current
     if (!container || !container.children.length) return
-
-    const maxScroll = container.scrollWidth - container.offsetWidth
-
-    // 🚫 se já está no final, não faz nada
-    if (container.scrollLeft >= maxScroll) return
 
     const style = window.getComputedStyle(container)
     const gap = parseInt(style.gap) || 0
@@ -53,17 +32,7 @@ export default function GamePage() {
         left: cardWidth,
         behavior: "smooth"
     })
-
-    // 🔥 atualiza estados depois do scroll
-    setTimeout(() => {
-        const newScroll = container.scrollLeft
-
-        setIsAtStart(newScroll <= 5)
-        setIsAtEnd(newScroll >= maxScroll - 5)
-    }, 300)
 }
-
-
 
     const handleLeftClick = () => {
     const container = carrossel.current
@@ -77,22 +46,6 @@ export default function GamePage() {
         left: -cardWidth,
         behavior: "smooth"
     })
-
-    // 👇 força correção no final
-        setTimeout(() => {
-        const maxScroll = container.scrollWidth - container.offsetWidth
-
-        // corrige início
-        if (container.scrollLeft < 5) {
-            container.scrollLeft = 0
-        }
-
-        const current = container.scrollLeft
-
-        setIsAtStart(current <= 5)
-        setIsAtEnd(current >= maxScroll - 5)
-
-    }, 300)
 }   
 
     const handleSearch = (searchTerm) => {
@@ -107,11 +60,31 @@ export default function GamePage() {
     }
 
     useEffect(() => {
+        // Rela a página para o topo sempre que o ID mudar
+        window.scrollTo(0, 0);
+
         async function fetchGame() {
             try {
                 setLoading(true);
+                setError(null);
+                
                 const { data } = await getGameById(id);
                 setGame(data);
+
+                // Buscar recomendações baseadas nos gêneros
+                if (data.genres && data.genres.length > 0) {
+                    const genreIds = data.genres.map(g => g.id);
+                    try {
+                        const recommendedRes = await getGamesByGenres(genreIds, 20);
+                        
+                        const filtered = recommendedRes.data.results
+                            .filter(g => String(g.id) !== String(id))
+                            .slice(0, 10);
+                        setRecommendedGames(filtered);
+                    } catch (recErr) {
+                        console.error("Erro ao buscar recomendações:", recErr);
+                    }
+                }
             } catch (err) {
                 console.error(err);
                 setError(err.message);
@@ -119,7 +92,10 @@ export default function GamePage() {
                 setLoading(false);
             }
         }
-        fetchGame();
+        
+        if (id) {
+            fetchGame();
+        }
     }, [id]);
 
     if (loading) return <p>Carregando...</p>
@@ -172,19 +148,15 @@ export default function GamePage() {
             <div className="recomendados">
                 <h4>Recomendações</h4>
                 <div className="carrossel">
-                    <button className="seta-esquerda" onClick={handleLeftClick} disabled={isAtStart}>
+                    <button className="seta-esquerda" onClick={handleLeftClick}>
                         <IoIosArrowBack />
                     </button>
                     <div className="recomendacoes" ref={carrossel}>
-                        <Recomendado/>
-                        <Recomendado/>
-                        <Recomendado/>
-                        <Recomendado/>
-                        <Recomendado/>
-                        <Recomendado/>
-                        <Recomendado/>
+                        {recommendedGames.map(r => (
+                            <Recomendado id={r.id} gameImg={r.background_image} gameName={r.name}/>
+                        ))}
                     </div>
-                    <button className="seta-direita" onClick={handleRightClick} disabled ={isAtEnd}>
+                    <button className="seta-direita" onClick={handleRightClick}>
                         <IoIosArrowForward />
                     </button>
                 </div>

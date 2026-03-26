@@ -5,7 +5,7 @@ import { getGenres } from "../../services/games/getGenres"
 import { getPlatforms } from "../../services/games/getPlatforms"
 import { getDevelopers } from "../../services/games/getDevelopers"
 
-export default function Header({onSearch, onFilterChange, initialFilters = {}, showFilters = true}){
+export default function Header({onSearch, onFilterChange, initialFilters, showFilters = true}){
     const [searchTerm, setSearchTerm] = useState("")
     const [filters, setFilters] = useState({
         platforms: initialFilters?.platforms || [],
