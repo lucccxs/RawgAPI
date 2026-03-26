@@ -132,7 +132,7 @@ export default function GamePage() {
                             </div>
                             <div className="infos-adicionais">
                                 <p>{game.genres?.map(g => g.name).join(", ") || "N/A"}</p>
-                                <p>Duração: {game.playtime}h</p>
+                                <p>Duração: {game.playtime == 0 ? "N/A" : `${game.playtime}h`}</p>
                             </div>
                             <div className="dev-pub">
                                 <p>Developer: {game.developers?.[0]?.name || "N/A"}</p>

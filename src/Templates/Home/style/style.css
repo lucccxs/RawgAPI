@@ -8,3 +8,25 @@ body{
     color: white;
     margin-left: 30px;
 }
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.buttons button{
+    background-color: #494848;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+
+.buttons button:hover{
+    background-color: #272626;;
+}
