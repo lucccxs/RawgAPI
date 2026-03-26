@@ -208,3 +208,29 @@
     pointer-events: none;
    
 }
+
+.loading {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading h1 {
+    font-family: "Montserrat";
+    color: white;
+    font-size: 80px;
+}
+
+.error {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.error h1 {
+    font-family: "Datatype";
+    color: red;
+    font-size: medium;
+}

@@ -18,6 +18,10 @@ export const getGames = async (pageNumber, filters = {}) => {
     }
     if (filters.ordering) {
         url += `&ordering=${filters.ordering}`;
+
+        if (filters.ordering.includes('rating') || filters.ordering.includes('metacritic')) {
+            url += `&metacritic=1,100`;
+        }
     }
 
     const response = await AxiosWithoutAuthToken().get(url);

@@ -30,3 +30,30 @@ body{
 .buttons button:hover{
     background-color: #272626;;
 }
+
+
+.loading {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading h1 {
+    font-family: "Datatype";
+    color: white;
+    font-size: 80px;
+}
+
+.error {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.error h1 {
+    font-family: "Datatype", monospace;
+    color: red;
+    font-size: 50px;
+}

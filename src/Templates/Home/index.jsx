@@ -77,8 +77,8 @@ export default function Home(){
     }
     
 
-    if (loading) return <p>Carregando...</p>
-    if (error) return <p>Error: {error}</p>
+    if (loading) return <div className="loading"><h1>Carregando...</h1></div>
+    if (error) return <div className="error"><h1>Erro: {error}</h1></div>
 
     return(
         

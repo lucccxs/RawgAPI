@@ -77,7 +77,7 @@ export default function Header({onSearch, onFilterChange, initialFilters, showFi
     }
 
     const getOrderingLabel = (ordering) => {
-        if (ordering === '-rating') return 'Melhor Avaliação'
+        if (ordering === '-metacritic') return 'Melhor Avaliação'
         if (ordering === '-released') return 'Mais Recente'
         return ordering
     }
@@ -325,8 +325,8 @@ export default function Header({onSearch, onFilterChange, initialFilters, showFi
                                         type="radio" 
                                         id="top-rating"
                                         name="ordering"
-                                        checked={filters.ordering === '-rating'}
-                                        onChange={() => handleOrderingChange('-rating')}
+                                        checked={filters.ordering === '-metacritic'}
+                                        onChange={() => handleOrderingChange('-metacritic')}
                                     />
                                     <label htmlFor="top-rating" style={{marginLeft: "8px", cursor: "pointer"}}>
                                         Melhor Avaliação
