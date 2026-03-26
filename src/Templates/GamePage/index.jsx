@@ -78,7 +78,8 @@ export default function GamePage() {
                         const recommendedRes = await getGamesByGenres(genreIds, 20);
                         
                         const filtered = recommendedRes.data.results
-                            .filter(g => String(g.id) !== String(id))
+                            .filter(g => String(g.id) !== String(id)).
+                            sort((a, b) => (b.metacritic || 0) - (a.metacritic || 0))
                             .slice(0, 10);
                         setRecommendedGames(filtered);
                     } catch (recErr) {
@@ -153,7 +154,14 @@ export default function GamePage() {
                     </button>
                     <div className="recomendacoes" ref={carrossel}>
                         {recommendedGames.map(r => (
-                            <Recomendado id={r.id} gameImg={r.background_image} gameName={r.name}/>
+                            r.rating > 0 && (
+                            <Recomendado 
+                                key={r.id} 
+                                id={r.id} 
+                                gameImg={r.background_image} 
+                                gameName={r.name}
+                            />
+                        )
                         ))}
                     </div>
                     <button className="seta-direita" onClick={handleRightClick}>

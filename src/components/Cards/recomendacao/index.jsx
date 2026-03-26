@@ -21,6 +21,9 @@ export default function Recomendado ({ id, gameImg, gameName }) {
                             e.target.src = 'https://via.placeholder.com/250x150?text=Sem+Imagem';
                         }}
                     />
+                    <div className="overlay-nome">
+                        <h3>{gameName}</h3>
+                    </div>
                 </div>
                 <hr />
             </div>
